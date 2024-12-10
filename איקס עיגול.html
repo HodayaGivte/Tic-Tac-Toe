@@ -1,0 +1,219 @@
+<html>
+    <style>
+      
+      body{
+        text-align: center;
+        margin-left: 35%; 
+        background-image:url("tic.jpg");
+        background-position: center;
+        background-size:cover;
+      }
+      td{
+        text-align: center;
+        background-color: white;
+        width:100PX;
+        height:80px;
+        color:black;
+        font-size:x-large;
+      }
+      td:hover{
+        background-color: #ddd;
+      }
+       button  {
+        background-color: white;
+        border: none;
+        color: rgb(16, 13, 13);
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;   
+      } 
+      .newGame {
+        outline: none;
+        background: black;
+        padding: 12px 40px;
+        font-size: 1rem;
+        font-weight: bold;
+        color: #fff;
+        border: none;
+        transition: all 0.2s ease-in-out;
+      }
+
+      .newGame:hover {
+        background: rgb(47, 32, 211);
+        color: white;
+      }
+
+      .title{
+        margin-right: 60%;
+        
+      }
+      h3{
+        margin-right: 60%;
+        font-style:initial;
+        font-family:'Times New Roman', Times, serif;
+      }
+
+
+    </style>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        
+    <head>
+        <script>
+           var tor1 = 0;
+           var counter = 0;
+           function Lechitsa(kaftor){
+             var game = document.getElementsByTagName("td");
+             if(kaftor == "clear"){
+              for(var i=0; i<game.length-1; i++){
+                  game[i].innerHTML = " ";
+              }
+              document.getElementById("win").innerHTML = "TURN X";
+              tor1 = 0;
+              counter = 0;
+            }   
+           }
+
+           function tor(x){
+              if(document.getElementsByTagName("td")[x].innerText != "X" && document.getElementsByTagName("td")[x].innerText != "O" ){
+                 counter++;
+                 if(!bdika(true)){
+                  
+                   if(tor1%2 == 0){
+                     siman = "X";
+                     document.getElementById("win").innerHTML = "TURN O";
+                   }
+                   else{
+                     siman = "O";
+                     document.getElementById("win").innerHTML = "TURN X";
+                   } 
+                   document.getElementsByTagName("td")[x].innerHTML = siman; 
+                   tor1++; 
+                 }
+              }
+               if(counter == 9)
+                  document.getElementById("win").innerHTML = "THE GAME ENDED IN A TIE!";
+               bdika();
+           }
+
+           function bdika(){
+              if(ofkiX(true)){
+                 document.getElementById("win").innerHTML = "THE WINNER IS X!";
+                  return true;
+              }   
+              if(ofkiO(true)){
+                 document.getElementById("win").innerHTML = "THE WINNER IS O!"; 
+                 return true;  
+              }
+              if(anachiX(true)){  
+                document.getElementById("win").innerHTML = "THE WINNER IS X!";
+                return true;
+              }
+              if(anachiO(true)){
+                document.getElementById("win").innerHTML = "THE WINNER IS O!"; 
+                return true;
+              } 
+              if(alachsonX(true)) {
+                document.getElementById("win").innerHTML = "THE WINNER IS X!"; 
+                return true;
+              }  
+              if(alachsonO(true)) {
+                document.getElementById("win").innerHTML = "THE WINNER IS O!";
+                return true;
+              }
+           }
+
+           function ofkiX(){
+            var a=document.getElementsByTagName("td");
+              if(a[0].innerHTML=="X" && a[1].innerHTML=="X" && a[2].innerHTML=="X")
+                 return true;
+            var b=document.getElementsByTagName("td");
+              if(b[3].innerHTML=="X" && b[4].innerHTML=="X" && b[5].innerHTML=="X")
+                 return true;
+            var c=document.getElementsByTagName("td");
+              if(c[6].innerHTML=="X" && c[7].innerHTML=="X" && c[8].innerHTML=="X")
+                 return true; 
+                  
+           }
+           function ofkiO(){
+            var a=document.getElementsByTagName("td");
+              if(a[0].innerHTML=="O" && a[1].innerHTML=="O" && a[2].innerHTML=="O")
+                 return true;
+            var b=document.getElementsByTagName("td");
+              if(b[3].innerHTML=="O" && b[4].innerHTML=="O" && b[5].innerHTML=="O")
+                 return true;
+            var c=document.getElementsByTagName("td");
+              if(c[6].innerHTML=="O" && c[7].innerHTML=="O" && c[8].innerHTML=="O")
+                 return true; 
+                  
+           }
+
+           function anachiX(){
+            var a=document.getElementsByTagName("td");
+              if(a[0].innerHTML=="X" && a[3].innerHTML=="X" && a[6].innerHTML=="X")
+                 return true;
+            var b=document.getElementsByTagName("td");
+              if(b[1].innerHTML=="X" && b[4].innerHTML=="X" && b[7].innerHTML=="X")
+                 return true;
+            var c=document.getElementsByTagName("td");
+              if(c[2].innerHTML=="X" && c[5].innerHTML=="X" && c[8].innerHTML=="X")
+                 return true;  
+           
+           }
+           function anachiO(){
+            var a=document.getElementsByTagName("td");
+              if(a[0].innerHTML=="O" && a[3].innerHTML=="O" && a[6].innerHTML=="O")
+                 return true;
+            var b=document.getElementsByTagName("td");
+              if(b[1].innerHTML=="O" && b[4].innerHTML=="O" && b[7].innerHTML=="O")
+                 return true;
+            var c=document.getElementsByTagName("td");
+              if(c[2].innerHTML=="O" && c[5].innerHTML=="O" && c[8].innerHTML=="O")
+                 return true;  
+           
+           }
+
+           
+           function alachsonX(){
+            var a=document.getElementsByTagName("td");
+              if(a[0].innerHTML=="X" && a[4].innerHTML=="X" && a[8].innerHTML=="X")
+                 return true;
+            var b=document.getElementsByTagName("td");
+              if(b[2].innerHTML=="X" && b[4].innerHTML=="X" && b[6].innerHTML=="X")
+                 return true;
+           }
+           function alachsonO(){
+            var a=document.getElementsByTagName("td");
+              if(a[0].innerHTML=="O" && a[4].innerHTML=="O" && a[8].innerHTML=="O")
+                 return true;
+            var b=document.getElementsByTagName("td");
+              if(b[2].innerHTML=="O" && b[4].innerHTML=="O" && b[6].innerHTML=="O")
+                 return true;
+           }
+           
+        
+        </script>
+    </head>
+    <body>
+        <script>
+            document.write("<h1 class=title>איקס עיגול</h1>");
+            document.write("<table>");
+            document.write("<tr><td type='text'  onclick=tor(0)>");
+            document.write("<td type='text' onclick=tor(1)>");
+            document.write("<td type='text' onclick=tor(2)></tr>"); 
+            document.write("<tr><td type='text' onclick=tor(3)>");
+            document.write("<td type='text' onclick=tor(4)>");
+            document.write("<td type='text' onclick=tor(5)></tr>");
+            document.write("<tr><td type='text' onclick=tor(6)>");
+            document.write("<td type='text' onclick=tor(7)>");
+            document.write("<td type='text' onclick=tor(8)></tr>");   
+            document.write("<tr><td colspan=3 class='newGame' onclick=Lechitsa('clear')>NEW GAME</tr>");  
+        </script>
+        
+        <h3 id="win">TURN X</h3>
+    </body>
+</html>
